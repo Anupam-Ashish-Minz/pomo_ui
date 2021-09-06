@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+/* import 'package:flutter_stopwatch_timer_demo/button_widget.dart'; */
 
 void main() {
   runApp(Pomo());
@@ -9,14 +11,16 @@ class Pomo extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              MyButton(title: "TOMOTO", color: Colors.red),
-              MyButton(title: "SHORT BREAK", color: Colors.grey[500]),
-              MyButton(title: "LONG BREAK", color: Colors.grey[500]),
-              MyButton(title: "RESET", color: Colors.grey[400]),
+              Clock(),
+              MyButton(title: "TOMOTO", color: Colors.red[700]),
+              MyButton(title: "SHORT", color: Colors.grey[900]),
+              MyButton(title: "LONG", color: Colors.grey[900]),
+              MyButton(title: "RESET", color: Colors.grey[800]),
             ],
           ),
         ),
@@ -26,7 +30,6 @@ class Pomo extends StatelessWidget {
 }
 
 class MyButton extends StatelessWidget {
-
   final String title;
   final Color? color;
 
@@ -55,3 +58,20 @@ class MyButton extends StatelessWidget {
     );
   }
 }
+
+class Clock extends StatefulWidget {
+  @override
+  _ClockState createState() => _ClockState();
+}
+
+class _ClockState extends State<Clock> {
+  String time = DateTime.now().millisecondsSinceEpoch.toString();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text(time),
+    );
+  }
+}
+
